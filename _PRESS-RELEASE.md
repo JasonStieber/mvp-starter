@@ -17,28 +17,46 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > Crypto - The Data Dog
+
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > If you have data that you want to be securly held off site Crypto is for you. 
+
+<!-- Describe who the market for the product is and what benefit they get. One sentence only underneath the title. -->
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > Crypto encrypts your files, photos, and vidoes and stores them on a server server.  Crypto gives access to all your secure data any time you need, we keep it safe so you don't have to. 
+
+<!-- Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good. -->
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > In todays high data society the integrety of your information is everything.  One hack and ruin the reputation of a company and that will result in a loss to your bottom line.  Why stress about the security of your data. 
+
+<!-- Describe the problem your product solves. -->
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > Let Crypto handle the headache. With Crypto every day all of your data is sent to our server and held securly offite. 
+
+
+<!-- Describe how your product elegantly solves the problem. -->
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > 
+
+<!-- A quote from a spokesperson in your company. -->
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > 
+
+<!-- Describe how easy it is to get started. -->
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > 
+
+<!-- Provide a quote from a hypothetical customer that describes how they experienced the benefit. -->
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > 
+
+<!-- Wrap it up and give pointers where the reader should go next. -->

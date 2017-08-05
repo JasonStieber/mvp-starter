@@ -2,12 +2,14 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var items = require('../database');
 
+
+
 var app = express();
 
 // UNCOMMENT FOR REACT
 app.use(express.static(__dirname + '/../client/dist'));
-
-app.get('/items', function (req, res) {
+app.use(bodyParser.json());
+app.get('/db', function (req, res) {
   items.selectAll(function(err, data) {
     if(err) {
       res.sendStatus(500);
@@ -17,12 +19,24 @@ app.get('/items', function (req, res) {
   });
 });
 
-app.post('/server', function (req, res) {
+app.post('/login', function (req, res) {
   items.selectAll(function(err, data) {
     if(err) {
       res.sendStatus(500);
     } else {
-      console.log(data);
+      console.log(req.body);
+      res.sendStatus(201);
+    }
+  });
+});
+
+app.post('/signup', function (req, res) {
+  items.selectAll(function(err, data) {
+    if(err) {
+      res.sendStatus(500);
+    } else {
+      console.log(req.body);
+      res.sendStatus(201);
     }
   });
 });

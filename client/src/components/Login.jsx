@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import axios from 'axios';
 
 class Login extends React.Component {
   constructor(props) {
@@ -10,7 +11,8 @@ class Login extends React.Component {
     }
     this.updateUser = this.updateUser.bind(this);
     this.updatePass = this.updatePass.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
   }
   updateUser(event){
     this.setState({user: event.target.value});
@@ -20,16 +22,45 @@ class Login extends React.Component {
     this.setState({pass: event.target.value});
  }
 
-  handleSubmit(){
+  handleLogin(){
     alert('data will be sent');
-    $.post('/server',{user: this.state.user, pass: this.state.pass}, (data, status) => {
-      console.log(data, ' successfully sent to server')
-    });
+    var obj = {user: this.state.user, pass: this.state.pass};
+    axios.post('/login',obj)
+      .then((data) => {
+       console.log(data.body, 'was posted');
+      })
+      .always(() => {
+        console.log('error in index.js database post request');  
+      });
+  }
+
+  handleSignup(){
+    alert('you have signed up');
+    var obj = {user: this.state.user, pass: this.state.pass};
+    axios.post('/signup',obj)
+      .then((data) => {
+       console.log(data.body.user, 'was posted');
+      })
+      .always(() => {
+        console.log('error in index.js database post request');  
+      });
+    // $.ajax({
+    //   url: '/items', 
+    //   method: 'POST',
+    //   success: (data) => {
+    //   },
+    //   error: (err) => {
+    //     console.log('err', err);
+    //   }
+    // });
+    //   console.log(arguments[1], ' successfully sent to server')
+    //   debugger;
+    // });
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form>
         <div>
           Username:
             <div>
@@ -42,7 +73,8 @@ class Login extends React.Component {
             <input type='text' value={this.state.pass} onChange={this.updatePass}/>
           </div>
         </div>
-        <input type='submit' value='Submit' />
+        <button onClick={this.handleLogin}>Login</button>
+        <button onClick={this.handleSignup}>Sign Up</button>
       </form>
     );
   }

@@ -11,15 +11,24 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+var userSchema = mongoose.Schema({
+  id: Number,
+  username: String,
+  password: String,
+  salt: String
 });
 
-var Item = mongoose.model('Item', itemSchema);
+var dataSchema = mongoose.Schema({
+  owner: String,
+  data: String
+
+});
+
+var Users = mongoose.model('Users', userSchema);
+var Data = mongoose.model('Data', dataSchema);
 
 var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
+  Users.find({}, function(err, items) {
     if(err) {
       callback(err, null);
     } else {

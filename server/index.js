@@ -36,10 +36,11 @@ app.post('/signup', function (req, res) {
   db.selectAll(function(err, data) {
     if(err) {
       res.sendStatus(500);
-    } else {
+    } else {  
+      
+        // redirect to login page
       var salt = crypto.randomBytes(32).toString('hex');
-      // console.log(salt);
-      db.addUser(req.body.user, sha256(salt+req.body.pass), salt);
+      db.addUser(req.body.user.toUpperCase(), sha256(salt+req.body.pass), salt);
       res.sendStatus(201);
     }
   });

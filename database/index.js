@@ -24,8 +24,14 @@ var dataSchema = mongoose.Schema({
 
 });
 
+var sessionSchema = mongoose.Schema({
+  username: String,
+  cookie: String
+});
+
 var User = mongoose.model('User', userSchema);
 var Data = mongoose.model('Data', dataSchema);
+var Session = mongoose.model('Session', sessionSchema);
 
 var selectAll = function(callback) {
   User.find({}, function(err, items) {
@@ -38,9 +44,15 @@ var selectAll = function(callback) {
 };
 
 var addUser = function(username, hxPass, salt){
-  console.log(`${username}, ${hxPass}, ${salt}`);
-  var user = new User ({username: username, password: hxPass, salt: salt})
-  user.save();
+  User.findOne({username: username}, 'password', function(err, user){
+    if(user){
+      console.log('that user name is taken please take another');
+    }else{  
+    var user = new User ({username: username, password: hxPass, salt: salt})
+    console.log(`${username}, ${hxPass}, ${salt}`);
+    user.save();
+    }
+  });
 }
 
 module.exports.selectAll = selectAll;

@@ -1,6 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var items = require('../database');
+var db = require('../database');
+var sha256 = require('sha256')
+var crypto = require('crypto');
 
 
 
@@ -10,7 +12,7 @@ var app = express();
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 app.get('/db', function (req, res) {
-  items.selectAll(function(err, data) {
+  db.selectAll(function(err, data) {
     if(err) {
       res.sendStatus(500);
     } else {
@@ -20,7 +22,7 @@ app.get('/db', function (req, res) {
 });
 
 app.post('/login', function (req, res) {
-  items.selectAll(function(err, data) {
+  db.selectAll(function(err, data) {
     if(err) {
       res.sendStatus(500);
     } else {
@@ -31,15 +33,19 @@ app.post('/login', function (req, res) {
 });
 
 app.post('/signup', function (req, res) {
-  items.selectAll(function(err, data) {
+  db.selectAll(function(err, data) {
     if(err) {
       res.sendStatus(500);
     } else {
-      console.log(req.body);
+      var salt = crypto.randomBytes(32).toString('hex');
+      // console.log(salt);
+      db.addUser(req.body.user, sha256(salt+req.body.pass), salt);
       res.sendStatus(201);
     }
   });
 });
+
+
 
 app.listen(3000, function() {
   console.log('listening on port 3000!');

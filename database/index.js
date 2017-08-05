@@ -24,11 +24,11 @@ var dataSchema = mongoose.Schema({
 
 });
 
-var Users = mongoose.model('Users', userSchema);
+var User = mongoose.model('User', userSchema);
 var Data = mongoose.model('Data', dataSchema);
 
 var selectAll = function(callback) {
-  Users.find({}, function(err, items) {
+  User.find({}, function(err, items) {
     if(err) {
       callback(err, null);
     } else {
@@ -37,4 +37,11 @@ var selectAll = function(callback) {
   });
 };
 
+var addUser = function(username, hxPass, salt){
+  console.log(`${username}, ${hxPass}, ${salt}`);
+  var user = new User ({username: username, password: hxPass, salt: salt})
+  user.save();
+}
+
 module.exports.selectAll = selectAll;
+module.exports.addUser = addUser;

@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import List from './components/List.jsx';
+import Login from './components/Login.jsx';
+//import List from './components/List.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      items: []
+      cyptFiles: []
+      
     }
   }
 
@@ -25,10 +27,13 @@ class App extends React.Component {
     });
   }
 
+  // $.get('/login')
+  //   .done((login) => {<Login/>});
+    
   render () {
     return (<div>
-      <h1>Item List</h1>
-      <List items={this.state.items}/>
+      <h1>Crypto</h1>
+      <Login />
     </div>)
   }
 }

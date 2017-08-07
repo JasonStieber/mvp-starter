@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Login from './components/Login.jsx';
+
+import { Router, browserHistory } from 'react-router';
+import routes from './routes';
+
 import axios from 'axios';
 
 //import List from './components/List.jsx';
@@ -9,15 +13,15 @@ import axios from 'axios';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       cyptFiles: []
-      
+
     }
   }
 
   // componentDidMount() {
   //   $.ajax({
-  //     url: '/items', 
+  //     url: '/items',
   //     success: (data) => {
   //       this.setState({
   //         items: data
@@ -31,9 +35,9 @@ class App extends React.Component {
 
   // grabFilesFromDB() {
   //   axios()
-    
+
   // }
-    
+
   render () {
     return (<div>
       <h1>Crypto</h1>

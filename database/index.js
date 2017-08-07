@@ -47,13 +47,12 @@ var addUser = function(username, hxPass, salt){
   User.findOne({username: username}, 'password', function(err, user){
     if(user){
       console.log('that user name is taken please take another');
-    }else{  
+    }else{
     var user = new User ({username: username, password: hxPass, salt: salt})
     console.log(`${username}, ${hxPass}, ${salt}`);
     user.save();
     }
   });
 }
-
 module.exports.selectAll = selectAll;
 module.exports.addUser = addUser;

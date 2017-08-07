@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import axios from 'axios';
 
-class Login extends React.Component {
+class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,12 +22,12 @@ class Login extends React.Component {
     this.setState({pass: event.target.value});
  }
 
-  handleLogin(){
-    alert('data will be sent');
+  handleSignup(){
+    alert('you have signed up');
     var obj = {user: this.state.user, pass: this.state.pass};
-    axios.post('/login',obj)
+    axios.post('/signup',obj)
       .then((data) => {
-       console.log(data.body, 'was posted');
+       console.log(data.body.user, 'was posted');
       })
       .always(() => {
         console.log('error in index.js database post request');  
@@ -37,7 +37,7 @@ class Login extends React.Component {
   render() {
     return (
       <div>
-        <h2>Please Login</h2>
+        <h2>Sign up below</h2>
           <form>
             <div>
               Username:
@@ -52,11 +52,11 @@ class Login extends React.Component {
               </div>
             </div>
             <button onClick={this.handleLogin}>Login</button>
-            <button onClick={() => {this.props.setPage(<Signup />)}}>Sign Up</button>
+            <button onClick={this.handleSignup}>Sign Up</button>
           </form>
         </div>
     );
   }
 }
 
-export default Login;
+export default Signup;

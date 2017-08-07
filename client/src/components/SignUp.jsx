@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import axios from 'axios';
 
-class Search extends React.Component {
+class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,18 +22,6 @@ class Search extends React.Component {
     this.setState({pass: event.target.value});
  }
 
-  handleLogin(){
-    alert('data will be sent');
-    var obj = {user: this.state.user, pass: this.state.pass};
-    axios.post('/login',obj)
-      .then((data) => {
-       console.log(data.body, 'was posted');
-      })
-      .always(() => {
-        console.log('error in index.js database post request');  
-      });
-  }
-
   handleSignup(){
     alert('you have signed up');
     var obj = {user: this.state.user, pass: this.state.pass};
@@ -48,24 +36,27 @@ class Search extends React.Component {
 
   render() {
     return (
-      <form>
-        <div>
-          DickButt:
+      <div>
+        <h2>Sign up below</h2>
+          <form>
             <div>
-              <input type='text' value={this.state.user} onChange={this.updateUser}/>
+              Username:
+                <div>
+                  <input type='text' value={this.state.user} onChange={this.updateUser}/>
+                </div>
+             </div>
+            <div>
+              Password: 
+              <div>
+                <input type='text' value={this.state.pass} onChange={this.updatePass}/>
+              </div>
             </div>
-         </div>
-        <div>
-          Password: 
-          <div>
-            <input type='text' value={this.state.pass} onChange={this.updatePass}/>
-          </div>
+            <button onClick={this.handleLogin}>Login</button>
+            <button onClick={this.handleSignup}>Sign Up</button>
+          </form>
         </div>
-        <button onClick={this.handleLogin}>Login</button>
-        <button onClick={this.handleSignup}>Sign Up</button>
-      </form>
     );
   }
 }
 
-export default Search;
+export default Signup;
